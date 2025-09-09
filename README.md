@@ -17,20 +17,21 @@ flowchart TB
     subgraph Duplex["Duplex (BTC-like L1)"]
       UTXO[UTXO Ledger]
       PoUW[Proof of Useful Work Consensus]
+      Escrow["Escrow Module: Account, Vault, and Multisig"]
     end
 
     subgraph D1["D1: DeFi Execution Chain"]
-      SVM[SVM Execution Layer]
-      Consensus[Consensus Layer (Alpenglow / Simplex)]
-      Bridge[Bridge Module]
-      Indexer[Indexer + RPC Services]
-      Utils[Optional: Oracles, Multisig, Services]
+      SVM["SVM Execution Layer"]
+      Consensus["Consensus Layer: Alpenglow or Simplex"]
+      Bridge["Bridge Module"]
+      Indexer["Indexer + RPC Services"]
+      Utils["Optional: Oracles, Multisig, Services"]
     end
 
     User[Users & Wallets] -->|Deposit BTC/Assets| Duplex
     Duplex -->|Relay + Bridge In| Bridge
     Bridge --> SVM
-    SVM --> dApps[DeFi Apps: Custody, Payments, CLOBs, Yield]
+    SVM --> dApps["DeFi Apps: Custody, Payments, CLOBs, Yield"]
     dApps --> User
 ```
 
