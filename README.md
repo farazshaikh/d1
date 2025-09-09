@@ -53,6 +53,16 @@ We propose three options:
 * **(b) Modify Duplex**: Not feasible.
 * **(c) Modify SVM to support secp256k1**: Preferred, as it unifies UX for users and simplifies developer integration.
 
+Signature and hash algorithm use in BTC, ETH, and Solana are different.
+
+| Feature | BTC | ETH | SOL |
+| --- | --- | --- | --- |
+| Algorithm | ECDSA (legacy), Schnorr (Taproot) | ECDSA | Ed25519 |
+| Hash | SHA-256 | Keccak-256 | SHA-512 (used by Ed25519) |
+| Interop | Shares secp256k1 with ETH; different tx formats | Shares secp256k1 with BTC; different hash/tx | Defaults to Ed25519; supports additional curves for bridging |
+
+Table references: [1], [3], [7].
+
 ### Bridge Infrastructure
 
 * **Bridge In**: Users deposit BTC (or other UTXO assets) → monitored by relays → assets minted on D1.
