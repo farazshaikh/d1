@@ -1,4 +1,4 @@
-# Proposal: D1 — The DeFi Execution Layer for Duplex
+# Proposal: D1 — The DeFi Execution Layer for Dplx
 
 ## 1. Vision
 
@@ -6,7 +6,7 @@
 
 **D1** is designed as the **DeFi execution chain for Duplex**, leveraging the Solana Virtual Machine (SVM) to enable high-throughput smart contracts. By bridging Bitcoin liquidity and other cross-chain assets into D1, we create a programmable Layer 1 environment tailored for DeFi.
 
-**Objective**: Build a permissioned, SVM-based Layer 1 chain that evolves toward decentralization, supporting custody, payments, on-chain order books, and yield primitives — while unlocking the world’s largest untapped liquidity: Bitcoin.
+**Objective**: Build a permissioned, SVM-based Layer 1 chain that evolves toward decentralization, supporting custody, payments, on-chain order books, and yield primitives — while unlocking the world’s newest untapped liquidity: Dplx.
 
 ---
 
@@ -35,6 +35,8 @@ flowchart TB
     dApps --> User
 ```
 
+Diagram references: SVM [3]; Consensus [5][6]; Indexer [2].
+
 **Key Takeaway**: D1 is not just a bridge — it is a programmable Layer 1 ecosystem that extends Duplex’s security with SVM’s composability.
 
 ---
@@ -54,25 +56,25 @@ We propose three options:
 ### Bridge Infrastructure
 
 * **Bridge In**: Users deposit BTC (or other UTXO assets) → monitored by relays → assets minted on D1.
-* **Bridge Out**: Assets burned on D1 → standard L1 UTXO transaction back to Duplex. Optional escrow layer for audit.
+* **Bridge Out**: Assets burned on D1 → standard L1 UTXO transaction back to Duplex. Optional escrow layer for audit [7].
 * Reference architecture: Wormhole (Solana).
 
 ### RPC + Indexing
 
-* Wallet and transaction APIs for dApps.
-* Indexing for real-time state queries.
-* Reference: SolScan.
+* Wallet and transaction APIs for dApps [1][4].
+* Indexing for real-time state queries [2].
+* Reference: SolScan [2].
 
 ### Execution Layer
 
-* **Solana SVM (Agave)**: High-performance runtime, familiar to developers, growing ecosystem.
+* **Solana SVM (Agave)**: High-performance runtime, familiar to developers, growing ecosystem [3].
 
 ### Consensus Layer
 
-Two leading candidates:
+Two leading candidates (others: Tendermint [8]):
 
-* **Alpenglow (Solana Labs)**: Cutting-edge, high-performance consensus. Strong alignment with Solana’s roadmap.
-* **Simplex (Commonware)**: Production-ready SVM API integration, battle-tested abstractions.
+* **Alpenglow (Solana Labs)**: Cutting-edge, high-performance consensus. Strong alignment with Solana’s roadmap [5].
+* **Simplex (Commonware)**: Production-ready SVM API integration, battle-tested abstractions [6].
 
 Both options are backed by strong engineering teams → mitigates long-term risk.
 
@@ -127,3 +129,16 @@ gantt
 * **Proven Runtime**: SVM has demonstrated scalability and developer traction.
 * **Duplex Advantage**: Built-in security and unique Proof of Useful Work consensus.
 * **Strategic Timing**: First-mover opportunity to merge Bitcoin-grade security with Solana-grade composability.
+
+---
+
+## 7. References
+
+- [1] Ethereum Execution layer API: [ethereum/execution-apis](https://github.com/ethereum/execution-apis)
+- [2] Solana indexer: [Solscan](https://solscan.io/)
+- [3] Solana execution layer (SVM crate): [solana-svm on crates.io](https://crates.io/crates/solana-svm)
+- [4] Phantom wallet documentation: [Phantom Docs](https://docs.phantom.com/introduction)
+- [5] Alpenglow white paper: [Alpenglow v1.1 (PDF)](https://github.com/rogerANZA/Alpenglow-White-Paper/blob/main/Alpenglow-v1.1.pdf)
+- [6] Simplex consensus: [Simplex: A Simple and Fast Consensus Protocol](https://ia.cr/2023/463)
+- [7] Bitcoin SPV: [Simplified Payment Verification – BitcoinSV Wiki](https://wiki.bitcoinsv.io/index.php/Simplified_Payment_Verification)
+- [8] Tendermint (Rust): [tendermint crate](https://crates.io/crates/tendermint)
