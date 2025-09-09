@@ -1,10 +1,10 @@
-# Proposal: D1 — The DeFi Execution Layer for Dplx
+# Proposal: D1 — The DeFi Execution Layer for DPLX
 
 ## 1. Vision
 
-**Duplex** is a Bitcoin-like chain secured by *Proof of Useful Work* (PoUW), where consensus is based on matrix multiplication lottery mechanics. While Duplex inherits the robustness and simplicity of Bitcoin, it lacks programmability.
+**DPLX** is a Bitcoin-like chain secured by *Proof of Useful Work* (PoUW), where consensus is based on matrix multiplication lottery mechanics. While DPLX inherits the robustness and simplicity of Bitcoin, it lacks programmability.
 
-**D1** is designed as the **DeFi execution chain for Duplex**, leveraging the Solana Virtual Machine (SVM) to enable high-throughput smart contracts. By bridging Bitcoin liquidity and other cross-chain assets into D1, we create a programmable Layer 1 environment tailored for DeFi.
+**D1** is designed as the **DeFi execution chain for DPLX**, leveraging the Solana Virtual Machine (SVM) to enable high-throughput smart contracts. By bridging Bitcoin liquidity and other cross-chain assets into D1, we create a programmable Layer 1 environment tailored for DeFi.
 
 **Objective**: Build a permissioned, SVM-based Layer 1 chain that evolves toward decentralization, supporting custody, payments, on-chain order books, and yield primitives — while unlocking the world’s newest untapped liquidity: Dplx.
 
@@ -14,7 +14,7 @@
 
 ```mermaid
 flowchart TB
-    subgraph Duplex["Duplex (BTC-like L1)"]
+    subgraph DPLX["DPLX (BTC-like L1)"]
       UTXO[UTXO Ledger]
       PoUW[Proof of Useful Work Consensus]
       Escrow["Escrow Module: Account, Vault, and Multisig"]
@@ -28,8 +28,8 @@ flowchart TB
       Utils["Optional: Oracles, Multisig, Services"]
     end
 
-    User[Users & Wallets] -->|Deposit BTC/Assets| Duplex
-    Duplex -->|Relay + Bridge In| Bridge
+    User[Users & Wallets] -->|Deposit BTC/Assets| DPLX
+    DPLX -->|Relay + Bridge In| Bridge
     Bridge --> SVM
     SVM --> dApps["DeFi Apps: Custody, Payments, CLOBs, Yield"]
     dApps --> User
@@ -37,7 +37,7 @@ flowchart TB
 
 Diagram references: SVM [3]; Consensus [5][6]; Indexer [2].
 
-**Key Takeaway**: D1 is not just a bridge — it is a programmable Layer 1 ecosystem that extends Duplex’s security with SVM’s composability.
+**Key Takeaway**: D1 is not just a bridge — it is a programmable Layer 1 ecosystem that extends DPLX’s security with SVM’s composability.
 
 ---
 
@@ -45,12 +45,12 @@ Diagram references: SVM [3]; Consensus [5][6]; Indexer [2].
 
 ### Wallet Integration
 
-Duplex uses **secp256k1** while Solana SVM uses **Ed25519**, creating a key mismatch.
+DPLX uses **secp256k1** while Solana SVM uses **Ed25519**, creating a key mismatch.
 
 We propose three options:
 
 * **(a) Two-wallet approach**: Simple to implement, higher UX friction.
-* **(b) Modify Duplex**: Not feasible.
+* **(b) Modify DPLX**: Not feasible.
 * **(c) Modify SVM to support secp256k1**: Preferred, as it unifies UX for users and simplifies developer integration.
 
 Signature and hash algorithm use in BTC, ETH, and Solana are different.
@@ -66,7 +66,7 @@ Table references: [1], [3], [7].
 ### Bridge Infrastructure
 
 * **Bridge In**: Users deposit BTC (or other UTXO assets) → monitored by bitcoin SPV relay [5] → assets minted on D1.
-* **Bridge Out**: Assets burned on D1 → standard L1 UTXO transaction back to Duplex. Optional escrow layer for audit [7].
+* **Bridge Out**: Assets burned on D1 → standard L1 UTXO transaction back to DPLX. Optional escrow layer for audit [7].
 * Reference architecture: Wormhole (Solana) [9].
 
 ### RPC + Indexing
@@ -139,7 +139,7 @@ gantt
 
 * **Bitcoin Liquidity**: Over \$800B in capital remains largely idle in non-programmable chains.
 * **Proven Runtime**: SVM has demonstrated scalability and developer traction.
-* **Duplex Advantage**: Built-in security and unique Proof of Useful Work consensus.
+* **DPLX Advantage**: Built-in security and unique Proof of Useful Work consensus.
 * **Strategic Timing**: First-mover opportunity to merge Bitcoin-grade security with Solana-grade composability.
 
 ---
