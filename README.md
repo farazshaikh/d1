@@ -65,9 +65,9 @@ Table references: [1], [3], [7].
 
 ### Bridge Infrastructure
 
-* **Bridge In**: Users deposit BTC (or other UTXO assets) → monitored by relays → assets minted on D1.
+* **Bridge In**: Users deposit BTC (or other UTXO assets) → monitored by bitcoin SPV relay [5] → assets minted on D1.
 * **Bridge Out**: Assets burned on D1 → standard L1 UTXO transaction back to Duplex. Optional escrow layer for audit [7].
-* Reference architecture: Wormhole (Solana).
+* Reference architecture: Wormhole (Solana) [9].
 
 ### RPC + Indexing
 
@@ -85,12 +85,13 @@ Two leading candidates (others: Tendermint [8]):
 
 * **Alpenglow (Solana Labs)**: Cutting-edge, high-performance consensus. Strong alignment with Solana’s roadmap [5].
 * **Simplex (Commonware)**: Production-ready SVM API integration, battle-tested abstractions [6].
+Other options: Interchain Rust Tendermint [8],  Ethereum Reth POA [10].
 
 Both options are backed by strong engineering teams → mitigates long-term risk.
-
+Alpenglow is backed by Solana Labs, Simplex is backed by Commonware. Both have technlogy risk as they are new.
 ---
 
-## 4. Roadmap
+## 4. Tentative Roadmap to testnet and mainet (6 months needs to be refined)
 
 ```mermaid
 gantt
@@ -114,6 +115,7 @@ gantt
 * **Phase 3**: Permissioned testnet, early ecosystem onboarding (custody, payments, CLOBs).
 * **Phase 4**: Mainnet launch with BTC and multi-chain asset support.
 
+2 & 3 can be done in parallel.
 ---
 
 ## 5. Team & Execution Plan
@@ -152,3 +154,5 @@ gantt
 - [6] Simplex consensus: [Simplex: A Simple and Fast Consensus Protocol](https://ia.cr/2023/463)
 - [7] Bitcoin SPV: [Simplified Payment Verification – BitcoinSV Wiki](https://wiki.bitcoinsv.io/index.php/Simplified_Payment_Verification)
 - [8] Tendermint (Rust): [tendermint crate](https://crates.io/crates/tendermint)
+- [9] Solana wormhole bridge: [Wormhole](https://wormhole.com/docs/products/token-transfers/native-token-transfers/overview/)
+- [10] Reth POA: [Reth POA](https://ethereum.org/developers/docs/consensus-mechanisms/poa/)
